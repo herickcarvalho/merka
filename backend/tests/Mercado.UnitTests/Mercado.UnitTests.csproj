@@ -1,0 +1,20 @@
+<!--
+  Testes unitários (sem I/O): entidades de domínio, value objects, handlers
+  de Application com repositórios mockados. Referencia o host apenas para
+  ter acesso transitivo a todos os módulos; nenhum teste de negócio existe
+  ainda, pois nenhuma entidade/caso de uso foi implementado.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Api/Mercado.Api/Mercado.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="FluentAssertions" />
+  </ItemGroup>
+
+</Project>

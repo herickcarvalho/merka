@@ -1,0 +1,45 @@
+<!--
+  Central Package Management (CPM): define em um único lugar a versão de
+  cada pacote NuGet usado pela solução. Os .csproj individuais referenciam
+  os pacotes SEM versão (<PackageReference Include="..." /> apenas), e a
+  versão real vem daqui. Isso evita divergência de versões entre módulos
+  à medida que a solução cresce (problema comum em soluções grandes).
+  Doc oficial: https://learn.microsoft.com/nuget/consume-packages/central-package-management
+-->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Web / Hosting -->
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+
+    <!-- Persistência -->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.10" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+
+    <!-- CQRS / Mediator -->
+    <PackageVersion Include="MediatR" Version="12.4.1" />
+
+    <!-- Validação -->
+    <PackageVersion Include="FluentValidation" Version="11.10.0" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+
+    <!-- Observabilidade / Health Checks -->
+    <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="8.0.2" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="8.0.3" />
+
+    <!-- Testes -->
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageVersion Include="xunit" Version="2.9.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.1" />
+    <PackageVersion Include="NetArchTest.Rules" Version="1.3.2" />
+    <PackageVersion Include="Testcontainers.PostgreSql" Version="3.10.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.10" />
+  </ItemGroup>
+</Project>

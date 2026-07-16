@@ -1,0 +1,26 @@
+<!--
+  Directory.Build.props é importado automaticamente pelo MSBuild em TODOS os
+  .csproj abaixo desta pasta. Centraliza configurações comuns (versão do
+  C#, nullable, warnings como erro, etc.) para que cada projeto não precise
+  repetir as mesmas tags — prática padrão em soluções .NET com muitos
+  projetos.
+-->
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <WarningsAsErrors>Nullable</WarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Analisadores de código aplicados a toda a solução -->
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+</Project>

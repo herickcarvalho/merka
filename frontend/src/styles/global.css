@@ -1,0 +1,19 @@
+/* Estilos globais mínimos (reset básico). Nenhum design system foi
+   escolhido ainda — esta é apenas uma base neutra para começar. */
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}

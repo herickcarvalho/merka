@@ -1,0 +1,65 @@
+# Orquestra os três serviços do ERP em ambiente de desenvolvimento local:
+# banco de dados, API e frontend. Em produção, cada serviço normalmente
+# seria implantado separadamente (ex.: Kubernetes, ECS, etc.), mas manter
+# um compose único aqui facilita rodar o projeto completo com um comando.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mercado-erp-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-mercado_erp}
+      POSTGRES_USER: ${POSTGRES_USER:-mercado_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - mercado_erp_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-mercado_user} -d ${POSTGRES_DB:-mercado_erp}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - mercado-erp-network
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mercado-erp-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: ${ConnectionStrings__DefaultConnection:-Host=postgres;Port=5432;Database=mercado_erp;Username=mercado_user;Password=change_me}
+    ports:
+      - "${API_HTTP_PORT:-5000}:8080"
+    networks:
+      - mercado-erp-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:5000/api}
+    container_name: mercado-erp-frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"
+    networks:
+      - mercado-erp-network
+
+networks:
+  mercado-erp-network:
+    driver: bridge
+
+volumes:
+  mercado_erp_postgres_data:
