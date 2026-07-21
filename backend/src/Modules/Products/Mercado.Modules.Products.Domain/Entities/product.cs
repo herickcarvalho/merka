@@ -43,6 +43,16 @@ public class Product
         string? barcode,
         int minimumStock
         )
+
+        private void ValidateName(Name)
+{
+    if (string.IsNullOrWhiteSpace(name))
+    {
+        throw new ProductDomainException("O nome do produto é obrigatório.");
+    } 
+}
+
+ValidateName(name);
         
         {
 
@@ -66,5 +76,7 @@ public class Product
 
 
 }
+
+
 
 
