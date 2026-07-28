@@ -59,7 +59,19 @@ public class Product
         CreatedAt = DateTime.UtcNow;
 
 
-          public void ChangeMinimumStock(int newMinimumStock)
+      
+
+    private void ValidateName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ProductDomainException(
+                "O nome do produto é obrigatório.");
+        }
+    }
+
+
+        public void ChangeMinimumStock(int newMinimumStock)
         {
     if (newMinimumStock < 0)
         }
@@ -95,14 +107,7 @@ public class Product
                
                }
 
-    private void ValidateName(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new ProductDomainException(
-                "O nome do produto é obrigatório.");
-        }
-    }
+               
 }
 
 public void Deactivate()
