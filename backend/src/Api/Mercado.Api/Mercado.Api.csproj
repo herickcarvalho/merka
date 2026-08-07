@@ -1,0 +1,26 @@
+<!--
+  Único ponto de entrada executável da solução (o "Composition Root").
+  Aqui NÃO fica regra de negócio nem acesso a dados — apenas: (1) registro
+  de cada módulo via seus métodos AddXApplication()/AddXInfrastructure(),
+  (2) configuração de pipeline HTTP (Swagger, CORS, health checks), e (3)
+  Program.cs. Referencia a Infrastructure de cada módulo (que por sua vez
+  já referencia a Application e o Domain correspondentes).
+-->
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="../../Modules/Products/Mercado.Modules.Products.Infrastructure/Mercado.Modules.Products.Infrastructure.csproj" />
+    <ProjectReference Include="../../Modules/Inventory/Mercado.Modules.Inventory.Infrastructure/Mercado.Modules.Inventory.Infrastructure.csproj" />
+    <ProjectReference Include="../../Modules/Sales/Mercado.Modules.Sales.Infrastructure/Mercado.Modules.Sales.Infrastructure.csproj" />
+    <ProjectReference Include="../../Modules/Purchasing/Mercado.Modules.Purchasing.Infrastructure/Mercado.Modules.Purchasing.Infrastructure.csproj" />
+    <ProjectReference Include="../../Modules/Identity/Mercado.Modules.Identity.Infrastructure/Mercado.Modules.Identity.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" />
+  </ItemGroup>
+
+</Project>

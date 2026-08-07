@@ -1,0 +1,21 @@
+<!--
+  Testes de integração: sobem a API real (WebApplicationFactory) contra um
+  PostgreSQL descartável via Testcontainers, validando o comportamento fim
+  a fim de casos de uso reais assim que forem implementados.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Api/Mercado.Api/Mercado.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Testcontainers.PostgreSql" />
+  </ItemGroup>
+
+</Project>
