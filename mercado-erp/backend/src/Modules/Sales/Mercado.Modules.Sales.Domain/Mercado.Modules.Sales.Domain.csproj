@@ -1,0 +1,15 @@
+<!--
+  Domain do módulo Sales. Contém (quando implementado) as entidades,
+  value objects, eventos de domínio e interfaces de repositório
+  ESPECÍFICOS deste módulo. Depende apenas do BuildingBlocks.Domain —
+  nunca referencia Application, Infrastructure ou qualquer pacote de
+  infraestrutura (EF Core, etc.). Esta é a regra de dependência que o
+  projeto Mercado.ArchitectureTests valida automaticamente.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../../BuildingBlocks/Mercado.BuildingBlocks.Domain/Mercado.BuildingBlocks.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

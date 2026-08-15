@@ -1,0 +1,12 @@
+<!--
+  Camada mais interna da Clean Architecture. NÃO possui dependência de
+  nenhum outro projeto ou framework externo (nem EF Core, nem ASP.NET).
+  Contém apenas tipos-base de modelagem de domínio (Entity, ValueObject,
+  DomainEvent, exceptions) que serão reaproveitados por TODOS os módulos
+  de negócio. Regra de arquitetura: esta camada nunca pode "olhar para
+  fora" — quem depende dela são Application/Infrastructure, nunca o
+  contrário. Essa regra é validada futuramente pelo projeto
+  Mercado.ArchitectureTests.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+</Project>
