@@ -32,7 +32,6 @@ public class Product
         ValidateName(name);
 
         Id = Guid.NewGuid();
-
         Name = name;
         Description = description;
         SKU = sku;
@@ -42,7 +41,6 @@ public class Product
         SalePrice = salePrice;
         Barcode = barcode;
         MinimumStock = minimumStock;
-
         IsActive = true;
         CreatedAt = DateTime.UtcNow;
     }
@@ -51,17 +49,14 @@ public class Product
     {
         if (string.IsNullOrWhiteSpace(name))
         {
-            throw new ProductDomainException("O nome do produto é obrigatório.");
+            throw new ProductDomainException(
+                "O nome do produto é obrigatório.");
         }
 
         if (name.Length < 3)
         {
-            throw new ProductDomainException("O produto deve possuir pelo menos 3 caracteres.");
-        }
-
-        if (Name == name)
-        {
-            throw new ProductDomainException("O novo nome deve ser diferente do nome atual.");
+            throw new ProductDomainException(
+                "O produto deve possuir pelo menos 3 caracteres.");
         }
     }
 
@@ -69,7 +64,8 @@ public class Product
     {
         if (newMinimumStock < 0)
         {
-            throw new ProductDomainException("O estoque mínimo não pode ser negativo.");
+            throw new ProductDomainException(
+                "O estoque mínimo não pode ser negativo.");
         }
 
         MinimumStock = newMinimumStock;
@@ -79,41 +75,44 @@ public class Product
     {
         ValidateName(newName);
 
+        if (Name == newName)
+        {
+            throw new ProductDomainException(
+                "O novo nome deve ser diferente do nome atual.");
+        }
+
         Name = newName;
+        UpdatedAt = DateTime.UtcNow;
     }
-
-
-
-
 
     public void ChangeSalePrice(decimal newSalePrice)
-{
-    if (newSalePrice <= 0)
     {
-        throw new ProductDomainException("O preço de venda deve ser maior que zero.");
+        if (newSalePrice <= 0)
+        {
+            throw new ProductDomainException(
+                "O preço de venda deve ser maior que zero.");
+        }
+
+        if (SalePrice == newSalePrice)
+        {
+            throw new ProductDomainException(
+                "O novo preço deve ser diferente do preço atual.");
+        }
+
+        SalePrice = newSalePrice;
+        UpdatedAt = DateTime.UtcNow;
     }
-
-    if (SalePrice == newSalePrice)
-    {
-        throw new ProductDomainException("O novo preço deve ser diferente do preço atual");
-    }
-
-    SalePrice = newSalePrice;  
-    UpdatedAt = DateTime.UtcNow;
-     
-
-    
-
-}
 
     public void Deactivate()
     {
         IsActive = false;
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public void Activate()
     {
         IsActive = true;
+        UpdatedAt = DateTime.UtcNow;
     }
 }
 

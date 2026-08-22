@@ -1,3 +1,5 @@
+using Mercado.BuildingBlocks.Application.Abstractions;
+using Mercado.Modules.Identity.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Mercado.Modules.Identity.Infrastructure.DependencyInjection;
@@ -12,9 +14,7 @@ public static class IdentityInfrastructureModule
 {
     public static IServiceCollection AddIdentityInfrastructure(this IServiceCollection services, string connectionString)
     {
-        // Exemplo futuro:
-        // services.AddDbContext<IdentityDbContext>(opt => opt.UseNpgsql(connectionString));
-        // services.AddScoped<IIdentityRepository, IdentityRepository>();
+      services.AddScoped<ICurrentUser, CurrentUser>();
         return services;
     }
 }

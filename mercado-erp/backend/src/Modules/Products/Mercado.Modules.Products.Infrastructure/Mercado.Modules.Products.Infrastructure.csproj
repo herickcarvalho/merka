@@ -7,7 +7,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="../Mercado.Modules.Products.Application/Mercado.Modules.Products.Application.csproj" />
+    <ProjectReference Include="../Mercado.Application/Mercado.Modules.Products.Application.csproj" />
     <ProjectReference Include="../../../BuildingBlocks/Mercado.BuildingBlocks.Infrastructure/Mercado.BuildingBlocks.Infrastructure.csproj" />
   </ItemGroup>
 

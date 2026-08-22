@@ -4,10 +4,6 @@ namespace Mercado.Modules.Identity.Infrastructure.Services;
 
 public class CurrentUser : ICurrentUser
 {
-    public CurrentUser(UserRole role)
-    {
-        Role = role;
-    }
-
-    public UserRole Role { get; }
+    public UserRole Role => UserRole.Manager;
+}
 }
