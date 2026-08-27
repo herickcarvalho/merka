@@ -1,0 +1,22 @@
+<!--
+  Testes de arquitetura (NetArchTest): garantem, de forma automatizada,
+  que ninguém quebre as regras de Clean Architecture ao longo dos meses
+  de desenvolvimento — ex.: "Domain não pode referenciar Infrastructure",
+  "Application não pode referenciar Microsoft.EntityFrameworkCore". Isso
+  substitui revisão manual de arquitetura em cada Pull Request.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Api/Mercado.Api/Mercado.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="NetArchTest.Rules" />
+  </ItemGroup>
+
+</Project>

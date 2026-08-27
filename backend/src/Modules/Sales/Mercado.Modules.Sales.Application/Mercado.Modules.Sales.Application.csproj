@@ -1,0 +1,19 @@
+<!--
+  Application do módulo Sales: casos de uso (Commands/Queries + Handlers),
+  validadores e DTOs de entrada/saída. Depende do Domain do próprio
+  módulo e do BuildingBlocks.Application (contratos de CQRS). NÃO conhece
+  EF Core nem ASP.NET — apenas abstrações.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="../Mercado.Modules.Sales.Domain/Mercado.Modules.Sales.Domain.csproj" />
+    <ProjectReference Include="../../../BuildingBlocks/Mercado.BuildingBlocks.Application/Mercado.BuildingBlocks.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="FluentValidation" />
+  </ItemGroup>
+
+</Project>

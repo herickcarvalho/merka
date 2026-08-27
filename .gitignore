@@ -1,0 +1,33 @@
+## ---------- Backend (.NET) ----------
+backend/**/bin/
+backend/**/obj/
+backend/**/*.user
+.vs/
+*.dll
+*.pdb
+
+## ---------- Frontend (Node/Vite) ----------
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+
+## ---------- Ambiente / Segredos ----------
+.env
+.env.*
+!.env.example
+*.pfx
+*.key
+
+## ---------- Docker ----------
+**/docker-compose.override.yml
+
+## ---------- SO / Editor ----------
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+
+## ---------- Logs ----------
+*.log
+npm-debug.log*
