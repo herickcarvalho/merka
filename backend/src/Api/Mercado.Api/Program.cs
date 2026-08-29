@@ -15,12 +15,13 @@ builder.Services.AddHealthChecks().AddNpgSql(connectionString, name: "postgres")
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy => policy
-        .WithOrigins(builder.Configuration["Cors:AllowedOrigin"] ?? "http://localhost:5173")
+        .WithOrigins(
+            "https://merka-frontend.onrender.com", 
+            "http://localhost:5173"
+        )
         .AllowAnyHeader()
         .AllowAnyMethod());
 });
-
-var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
